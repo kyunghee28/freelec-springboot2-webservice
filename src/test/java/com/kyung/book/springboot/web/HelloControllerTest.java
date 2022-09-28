@@ -13,6 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 @RunWith(SpringRunner.class) // 스프링 부트 테스트와 JUnit 사이에 연결자 역활
 @WebMvcTest(controllers = HelloController.class)
 public class HelloControllerTest {
