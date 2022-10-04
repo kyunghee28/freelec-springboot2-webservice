@@ -1,6 +1,9 @@
 package com.kyung.book.springboot.domain.posts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 public interface PostsRepository extends JpaRepository<Posts, Long> {
 
@@ -13,5 +16,8 @@ public interface PostsRepository extends JpaRepository<Posts, Long> {
         Entity 클래스와 기본 Entity Repository 는 함께 위치해야 한다.
         Entity 클래스는 기본 Repository 없니는 제대로 역활을 할 수 없다.
     */
+
+    @Query("SELECT p FROM Posts p ORDER BY p.id DESC")
+    List<Posts> findAllDesc(); 
 
 }
