@@ -24,7 +24,7 @@
                 {{#posts}}  <!--posts 라는 List 를 순회, java의 for 문과 동일 -->
                     <tr>
                         <td>{{id}}</td>
-                        <td>{{title}}</td>
+                        <td><a href="/posts/update/{{id}}">{{title}}</a></td>
                         <td>{{author}}</td>
                         <td>{{modifieDate}}</td>
                     </tr>

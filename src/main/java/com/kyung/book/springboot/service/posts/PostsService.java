@@ -24,7 +24,7 @@ public class PostsService {
         return postsRepository.save(requestDto.toEntity()).getId();
     }
 
-    // JPA의 영속성 컨텍스트 때문에 update 쿼리를 날리는 부분이 없다.
+    // JPA 의 영속성 컨텍스트 때문에 update 쿼리를 날리는 부분이 없다.
     @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto){
         Posts posts = postsRepository.findById(id)
@@ -51,4 +51,16 @@ public class PostsService {
                                 .map(PostsListResponseDto::new)   // .map(posts -> new PostsListResponseDto(posts)) 와 같다.
                                 .collect(Collectors.toList());
     }
+
+    // 게시글 삭제
+    @Transactional
+    public void delete(Long id){
+        // 존재하는 psots 인지 확인한 후 삭제
+        Posts posts = postsRepository.findById(id)
+                        .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id= " + id));
+
+        postsRepository.delete(posts);  // JpaRepository 에서 delete 메소드를 지원하고 있음
+    }
+
+
 }
